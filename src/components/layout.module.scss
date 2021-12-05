@@ -1,0 +1,24 @@
+.layout {
+  display: flex;
+
+  > .layout-item {
+    flex-shrink: 1;
+    flex-basis: auto;
+
+    width: 100%;
+  }
+
+  > .layout-item[data-item="page"] {
+    min-width: auto;
+    max-width: 680px;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  > .layout-item[data-item="side"] {
+    min-width: auto;
+    max-width: 320px;
+  }
+}

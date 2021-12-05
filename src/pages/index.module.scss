@@ -1,0 +1,18 @@
+.page[data-page="home"] {
+  > .page-content,
+  > .page-control {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  > .page-content {
+    > .content-list {
+      > .list-item {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}

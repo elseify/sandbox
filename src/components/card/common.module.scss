@@ -1,0 +1,46 @@
+.card:global {
+  padding-top: 16px;
+  padding-right: 12px;
+  padding-bottom: 16px;
+  padding-left: 12px;
+
+  cursor: pointer;
+
+  &:hover {
+    > .card-info {
+      > .info-title {
+        color: #828BF8;
+      }
+    }
+  }
+
+  > .card-info {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+
+    > .info-title {
+      display: block;
+
+      line-height: 28px;
+      font-weight: 500;
+      font-size: 18px;
+
+      color: #000000;
+    }
+  }
+
+  > .card-content {
+    > .content-text {
+      display: block;
+
+      line-height: 26px;
+      font-weight: 400;
+      font-size: 16px;
+
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+  }
+}

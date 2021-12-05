@@ -1,0 +1,46 @@
+.pagination {
+  display: flex;
+
+  justify-content: center;
+
+  > .pagination-list {
+    display: flex;
+
+    > .list-item {
+      display: block;
+
+      padding-top: 8px;
+      padding-right: 8px;
+      padding-bottom: 8px;
+      padding-left: 8px;
+
+      background-color: #FFFFFF;
+
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: #222426;
+
+        > .item-icon {
+          color: #FFFFFF;
+        }
+      }
+
+      > .item-icon {
+        display: block;
+
+        line-height: 32px;
+        font-family: 'JetBrains Mono';
+        font-weight: 200;
+        font-size: 24px;
+
+        color: #000000;
+
+        transition-property: color;
+        transition-duration: 0.1s;
+      }
+    }
+  }
+}
