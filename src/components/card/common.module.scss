@@ -4,14 +4,14 @@
   padding-bottom: 16px;
   padding-left: 12px;
 
+  border-radius: 6px;
+
+  box-shadow: 1px 2px 2px rgba($color: #000000, $alpha: 0.08);
+
   cursor: pointer;
 
   &:hover {
-    > .card-info {
-      > .info-title {
-        color: #828BF8;
-      }
-    }
+    box-shadow: 1px 2px 4px rgba($color: #000000, $alpha: 0.14);
   }
 
   > .card-info {

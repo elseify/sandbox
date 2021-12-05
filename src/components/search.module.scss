@@ -27,6 +27,10 @@
       background-color: #F2F4F6;
 
       border-radius: 6px;
+
+      &::placeholder {
+        color: rgba($color: #000000, $alpha: 0.44);
+      }
     }
   }
 }

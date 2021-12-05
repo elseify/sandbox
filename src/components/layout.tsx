@@ -11,12 +11,14 @@ export function Layout({ children }: LayoutType) {
   return (
     <>
       <Header />
-      <div className={cn(styles['layout'], 'container')}>
-        <div className="layout-item" data-item="page">
-          {children}
-        </div>
-        <div className="layout-item" data-item="side">
-          <Sidebar />
+      <div className={styles['layout']}>
+        <div className="layout-layer container">
+          <div className="layer-item" data-item="page">
+            {children}
+          </div>
+          <div className="layer-item" data-item="side">
+            <Sidebar />
+          </div>
         </div>
       </div>
     </>

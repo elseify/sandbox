@@ -9,6 +9,7 @@ export default class Document extends NextDocument {
     return (
       <Html lang="ru">
         <Head>
+          <title>Typeify</title>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
