@@ -7,10 +7,15 @@ import { Layout } from '@components/layout';
 import '@styles/app.scss';
 
 export default function App({ Component, pageProps, router }: AppProps) {
+  const { pathname } = router;
+
   return (
     <Layout>
       <AnimatePresence initial={false} exitBeforeEnter>
-        <Component key={router.pathname} {...pageProps} />
+        <Component
+          key={pathname}
+          {...pageProps}
+        />
       </AnimatePresence>
     </Layout>
   );

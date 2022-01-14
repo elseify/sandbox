@@ -8,11 +8,54 @@
 
   > .page-content {
     > .content-list {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+    }
+  }
+
+  > .page-group {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+
+    > .group-info,
+    > .group-list {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+
+    > .group-info {
+      > .info-title {
+        display: block;
+
+        line-height: 24px;
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+
+    > .group-list[data-type="column"] {
       > .list-item {
         &:not(:last-child) {
           margin-bottom: 20px;
         }
       }
+    }
+
+    > .group-list[data-type="grid"] {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
     }
   }
 }

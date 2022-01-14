@@ -1,7 +1,3 @@
-import React from 'react';
-
-import cn from 'classnames';
-
 import { Header } from '@components/header';
 import { Sidebar } from '@components/sidebar';
 
@@ -12,14 +8,17 @@ export function Layout({ children }: LayoutType) {
     <>
       <Header />
       <div className={styles['layout']}>
-        <div className="layout-layer container">
+        <div className="container">
+          {children}
+        </div>
+        {/* <div className="layout-layer container">
           <div className="layer-item" data-item="page">
             {children}
           </div>
           <div className="layer-item" data-item="side">
             <Sidebar />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
@@ -27,7 +26,7 @@ export function Layout({ children }: LayoutType) {
 
 type LayoutType = {
   /**
-   * Полученные элементы
+   * Дочерние элементы
    */
   children: React.ReactNode;
 };

@@ -1,17 +1,19 @@
-.card:global {
+.guide-card:global {
   padding-top: 16px;
-  padding-right: 12px;
+  padding-right: 14px;
   padding-bottom: 16px;
-  padding-left: 12px;
+  padding-left: 14px;
+
+  background-color: #FFFFFF;
 
   border-radius: 6px;
 
-  box-shadow: 1px 2px 2px rgba($color: #000000, $alpha: 0.08);
+  // box-shadow: 1px 2px 2px rgba($color: #000000, $alpha: 0.08);
 
   cursor: pointer;
 
   &:hover {
-    box-shadow: 1px 2px 4px rgba($color: #000000, $alpha: 0.14);
+    // box-shadow: 1px 2px 4px rgba($color: #000000, $alpha: 0.14);
   }
 
   > .card-info {

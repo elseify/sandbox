@@ -36,7 +36,7 @@ type PageType = {
    */
    pageKey: string;
   /**
-   * Наследуемые элементы
+   * Дочерние элементы
    */
   children: React.ReactNode;
 };

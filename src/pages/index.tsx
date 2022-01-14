@@ -1,23 +1,19 @@
 import { Page } from '@components/page';
-import { CommonCard } from '@components/card/common';
+import { More } from '@components/more';
+import { GuideCard } from '@components/card/guide';
+import { ChunkCard } from '@components/card/chunk';
 import { Pagination } from '@components/pagination';
 
 import styles from './index.module.scss';
 
 export default function Home() {
   return (
-    <Page pageName={styles['page']} pageKey={'home'}>
+    <Page pageName={styles['page']} pageKey="home">
       <div className="page-content">
         <div className="content-list">
-          <div className="list-item">
-            <CommonCard />
-          </div>
-          <div className="list-item">
-            <CommonCard />
-          </div>
-          <div className="list-item">
-            <CommonCard />
-          </div>
+          <ChunkCard />
+          <ChunkCard />
+          <ChunkCard />
         </div>
       </div>
       <div className="page-control">

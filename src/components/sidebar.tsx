@@ -17,16 +17,16 @@ export function Sidebar() {
             <span className="item-text">Свежее</span>
           </a>
         </Link>
-        <Link href="/news">
-          <a className={cn('list-item', { '_on': router.pathname.includes('/news') })}>
-            <span className="item-icon">{'@'}</span>
-            <span className="item-text">Новости</span>
-          </a>
-        </Link>
         <Link href="/guides">
           <a className={cn('list-item', { '_on': router.pathname.includes('/guides') })}>
             <span className="item-icon">{'@'}</span>
             <span className="item-text">Руководства</span>
+          </a>
+        </Link>
+        <Link href="/chunks">
+          <a className={cn('list-item', { '_on': router.pathname.includes('/chunks') })}>
+            <span className="item-icon">{'@'}</span>
+            <span className="item-text">Компоненты</span>
           </a>
         </Link>
       </div>

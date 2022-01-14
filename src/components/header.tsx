@@ -5,7 +5,7 @@ import styles from './header.module.scss';
 
 export function Header() {
   return (
-    <div className={styles['header']}>
+    <header className={styles['header']}>
       <div className="header-layer container">
         <div className="layer-item" data-item="brand">
           <Brand />
@@ -14,6 +14,6 @@ export function Header() {
           <Search />
         </div>
       </div>
-    </div>
+    </header>
   );
 }
