@@ -9,3 +9,29 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String?  @unique
+  username  String?  @unique
+  password  String
+  role      Role     @default(GUEST)
+  chunks    Chunk[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Chunk {
+  id        Int      @id @default(autoincrement())
+  image     String
+  blocks    Json
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  GUEST
+}

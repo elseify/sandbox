@@ -1,0 +1,38 @@
+.button {
+  display: flex;
+
+  justify-content: center;
+
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+
+  background-color: #828BF8;
+
+  border-radius: 6px;
+
+  user-select: none;
+
+  cursor: pointer;
+
+  &._fill {
+    width: 100%;
+  }
+
+  &._disabled {
+    > .button-text {
+      color: rgba($color: #FFFFFF, $alpha: 0.24);
+    }
+  }
+
+  > .button-text {
+    display: block;
+
+    line-height: 22px;
+    font-weight: 400;
+    font-size: 16px;
+
+    color: #FFFFFF;
+  }
+}

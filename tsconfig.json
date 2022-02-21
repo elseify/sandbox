@@ -16,11 +16,11 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
+      "@lib/*": [
+        "lib/*"
       ],
-      "@pages/*": [
-        "src/pages/*"
+      "@chunks/*": [
+        "src/chunks/*"
       ],
       "@styles/*": [
         "src/styles/*"

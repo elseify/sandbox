@@ -1,0 +1,36 @@
+.more {
+  display: flex;
+
+  justify-content: center;
+
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+
+  text-decoration-line: none;
+
+  background-color: #FFFFFF;
+
+  border-radius: 6px;
+
+  opacity: 0.34;
+
+  transition-property: opacity;
+  transition-duration: 0.1s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  > .more-icon {
+    display: block;
+
+    line-height: 24px;
+    font-family: 'JetBrains Mono';
+    font-weight: 300;
+    font-size: 18px;
+
+    color: #000000;
+  }
+}

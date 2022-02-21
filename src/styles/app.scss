@@ -4,6 +4,12 @@
   box-sizing: inherit;
 }
 
+html,
+body,
+body > div:first-child {
+  height: 100%;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -16,10 +22,14 @@ body {
 
   font-family: -apple-system, BlinkMacSystemFont, 'Raleway', 'Segoe UI', sans-serif;
 
-  background-color: #F2F4F6;
-
   overflow-x: hidden;
   overflow-y: scroll;
+
+  > div:first-child {
+    display: flex;
+
+    flex-direction: column;
+  }
 }
 
 h1,
@@ -90,12 +100,14 @@ button[type="reset"] {
   width: 100%;
 
   min-width: auto;
-  max-width: 1060px;
+  max-width: 1072px;
+
+  height: 100%;
 
   padding-top: 0;
-  padding-right: 20px;
+  padding-right: 16px;
   padding-bottom: 0;
-  padding-left: 20px;
+  padding-left: 16px;
 
   @extend %app-content;
 }
