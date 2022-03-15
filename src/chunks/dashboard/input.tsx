@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import styles from './input.module.scss';
+import styles from './Input.module.scss';
 
 const Input = forwardRef<HTMLInputElement, PropsType>((props, ref) => {
   const {
@@ -11,7 +11,7 @@ const Input = forwardRef<HTMLInputElement, PropsType>((props, ref) => {
 
   return (
     <input
-      className={styles['input']}
+      className={styles.input}
       type="text"
       name="text"
       ref={ref}
@@ -26,7 +26,6 @@ type PropsType = {
   isTouched?: boolean;
 } & AttrsType;
 
-export default Input;
 export {
   Input,
 };

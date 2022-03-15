@@ -1,110 +1,29 @@
-import crypto from 'crypto';
+import * as jose from 'jose';
+import type { JWTPayload } from 'jose';
 
 const key = 'PoG+Ce6UvNg805KG6eic+vuwZ5ahPwIhk50fQGvzHjM=';
-const response = {
+const res = {
   success: true,
   denied: false,
 };
 
-function tokenSign(body: BodyType = {}) {
-  const head: HeadType = {
-    alg: 'HS256',
-    typ: 'JWT',
-  };
+async function tokenSign(payload: JWTPayload = {}) {
+  if (!payload.exp) payload.exp = Date.now() + 86400 * 30;
+  if (!payload.iat) payload.iat = Date.now();
 
-  if (!body.exp) body.exp = Date.now() + 86400 * 30;
-  if (!body.iat) body.iat = Date.now();
-
-  const encodedHead = Buffer.from(JSON.stringify(head)).toString('base64url');
-  const encodedBody = Buffer.from(JSON.stringify(body)).toString('base64url');
-
-  const encodedSign = crypto.createHmac('sha256', 'key')
-    .update(`${encodedHead}.${encodedBody}`)
-    .digest('base64url');
-
-  return [
-    encodedHead,
-    encodedBody,
-    encodedSign,
-  ].join('.');
+  return await new jose.SignJWT(payload)
+    .setProtectedHeader({ alg: 'HS256' })
+    .sign(new TextEncoder().encode(key));
 }
 
-function tokenVerify(token: string) {
-  if (!token.includes('.')) {
-    return response.denied;
+async function tokenVerify(token: string) {
+  try {
+    await jose.jwtVerify(token, new TextEncoder().encode(key));
+
+    return res.success;
+  } catch {
+    return res.denied;
   }
-
-  const [
-    tokenHead,
-    tokenBody,
-    tokenSign,
-  ] = token.split('.');
-
-  if (!tokenSign) {
-    return response.denied;
-  }
-
-  const decodedHead = Buffer.from(tokenHead, 'base64url').toString('utf8');
-  const decodedBody = Buffer.from(tokenBody, 'base64url').toString('utf8');
-
-  const head: HeadType = JSON.parse(decodedHead);
-  const body: BodyType = JSON.parse(decodedBody);
-
-  if (!body.exp) {
-    return response.denied;
-  }
-
-  if (body.exp < Date.now()) {
-    return response.denied;
-  }
-
-  if (head.alg === 'HS256') {
-    const encodedSign = crypto.createHmac('sha256', key)
-      .update(`${tokenHead}.${tokenBody}`)
-      .digest('base64url');
-
-    if (tokenSign === encodedSign) {
-      return response.success;
-    }
-  }
-
-  return response.denied;
-}
-
-type HeadType = {
-  alg?: string;
-  typ?: 'JWT';
-};
-
-type BodyType = {
-  /**
-   * 'iss' (Issuer) Claim
-   */
-  iss?: string;
-  /**
-   * 'sub' (Subject) Claim
-   */
-  sub?: string;
-  /**
-   * 'aud' (Audience) Claim
-   */
-  aud?: string;
-  /**
-   * 'exp' (Expiration Time) Claim
-   */
-  exp?: number;
-  /**
-   * 'nbf' (Not Before) Claim
-   */
-  nbf?: string;
-  /**
-   * 'iat' (Issued At) Claim
-   */
-  iat?: number;
-  /**
-   * 'jti' (JWT ID) Claim
-   */
-  jti?: string;
 }
 
 export {

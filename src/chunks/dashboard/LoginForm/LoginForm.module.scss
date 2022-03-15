@@ -4,9 +4,8 @@
   flex-direction: column;
 }
 
-.content,
-.control {
+.field {
   &:not(:last-child) {
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 }

@@ -1,4 +1,4 @@
-.button {
+.block {
   display: flex;
 
   justify-content: center;
@@ -21,18 +21,18 @@
   }
 
   &._disabled {
-    > .button-text {
+    > .text {
       color: rgba($color: #FFFFFF, $alpha: 0.24);
     }
   }
+}
 
-  > .button-text {
-    display: block;
+.text {
+  display: block;
 
-    line-height: 22px;
-    font-weight: 400;
-    font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  font-size: 16px;
 
-    color: #FFFFFF;
-  }
+  color: #FFFFFF;
 }

@@ -12,7 +12,7 @@ module.exports = {
     // Фильтруем по ключу 'use'
     const oneOfAll = oneOf.filter((oneOf) => oneOf.use);
 
-    oneOfAll.forEach(oneOfEach);
+    // oneOfAll.forEach(oneOfEach);
 
     return config;
 

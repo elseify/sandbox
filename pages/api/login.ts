@@ -9,7 +9,7 @@ import {
   tokenVerify,
 } from '@utils/token';
 
-export default async function signin(req: NextApiRequest, res: NextApiResponse) {
+export default async function login(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const {
       username,
@@ -27,9 +27,20 @@ export default async function signin(req: NextApiRequest, res: NextApiResponse) 
 
     if (user) {
       if (user.password === password) {
-        res.setHeader('Set-Cookie', `token=${tokenSign()}; Path=/; Max-Age=${86400 * 30}; HttpOnly`);
-        res.status(200);
-        res.end();
+        const token = await tokenSign();
+
+        res.setHeader('Set-Cookie', `token=${token}; Path=/; Max-Age=${86400 * 30}; HttpOnly`);
+        res.json(
+          {
+            login: 'success',
+          }
+        );
+      } else {
+        res.json(
+          {
+            login: 'denied',
+          }
+        );
       }
     }
   }

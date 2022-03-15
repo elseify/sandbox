@@ -1,0 +1,33 @@
+.block {
+  display: flex;
+
+  justify-content: center;
+
+  height: 100%;
+}
+
+.layer {
+  width: 100%;
+
+  min-width: auto;
+  max-width: 368px;
+
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.layerItem,
+.layerForm {
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.layerItem {
+  display: flex;
+
+  justify-content: center;
+}

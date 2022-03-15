@@ -1,4 +1,4 @@
-.chunk-card:global {
+.block {
   padding-top: 16px;
   padding-right: 14px;
   padding-bottom: 16px;
@@ -9,14 +9,18 @@
   border-radius: 6px;
 
   cursor: pointer;
+}
 
-  > .card-info {
-    > .info-title {
-      display: block;
+.info {
+ display: flex;
+}
 
-      line-height: 22px;
-      font-weight: 500;
-      font-size: 16px;
-    }
-  }
+.infoTitle {
+  display: block;
+
+  line-height: 22px;
+  font-weight: 500;
+  font-size: 16px;
+
+  color: #000000;
 }

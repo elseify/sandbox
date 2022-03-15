@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
 
-function Page({ className, pageKey, children }: PageType) {
+function Page({ className, children }: PageType) {
   return (
     <motion.main
       className={className}
-      data-page={pageKey}
       initial="hide"
       animate="show"
       exit="hide"
@@ -30,16 +29,11 @@ type PageType = {
    */
    className: string;
   /**
-   * Ключ идентификации элемента по атрибуту
-   */
-   pageKey: string;
-  /**
    * Дочерние элементы
    */
   children: React.ReactNode;
 };
 
-export default Page;
 export {
   Page,
 };

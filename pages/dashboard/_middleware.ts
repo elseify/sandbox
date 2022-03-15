@@ -4,12 +4,26 @@ import type {
   NextFetchEvent,
 } from 'next/server';
 
-export function middleware({ nextUrl }: NextRequest, event: NextFetchEvent) {
-  const absoluteUrl = nextUrl.clone();
+import {
+  tokenSign,
+  tokenVerify,
+} from '@utils/token';
 
-  // Устанавливаем путь
-  absoluteUrl.pathname = '/signin';
+export async function middleware(req: NextRequest, ev: NextFetchEvent) {
+  const {
+    cookies,
+    nextUrl,
+  } = req;
 
-  // Перенаправляем на страницу входа
-  return NextResponse.redirect(absoluteUrl, 302);
+  const isValid = await tokenVerify(cookies.token);
+
+  if (!isValid) {
+    const absoluteUrl = nextUrl.clone();
+
+    absoluteUrl.pathname = '/login';
+
+    return NextResponse.redirect(absoluteUrl, 302);
+  }
+
+  return NextResponse.next();
 }

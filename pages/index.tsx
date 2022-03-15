@@ -1,24 +1,26 @@
-import { Page } from '@chunks/page';
-import { More } from '@chunks/user/more';
-import { GuideCard } from '@chunks/user/card/guide';
-import { ChunkCard } from '@chunks/user/card/chunk';
-import { Pagination } from '@chunks/pagination';
+import { Page } from '@common/Page';
+import { Grid } from '@common/Grid';
+import { ChunkCard } from '@user/card/ChunkCard';
+import { GuideCard } from '@user/card/GuideCard';
+import { Pagination } from '@common/Pagination';
 
 import styles from './index.module.scss';
 
-export default function Home() {
+function Home() {
   return (
-    <Page className={styles['page']} pageKey="home">
-      <div className="page-content">
-        <div className="content-list">
+    <Page className={styles.block}>
+      <div className={styles.content}>
+        <Grid>
           <ChunkCard />
           <ChunkCard />
           <ChunkCard />
-        </div>
+        </Grid>
       </div>
-      <div className="page-control">
+      <div className={styles.control}>
         <Pagination />
       </div>
     </Page>
   );
 }
+
+export default Home;

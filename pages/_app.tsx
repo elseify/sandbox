@@ -1,9 +1,11 @@
 import Head from 'next/head';
-import type { AppProps } from 'next/app';
+import type {
+  AppProps,
+} from 'next/app';
 
 import { AnimatePresence } from 'framer-motion';
 
-import { Layout } from '@chunks/layout';
+import { Layout } from '@common/Layout';
 
 import '@styles/app.scss';
 
@@ -31,7 +33,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
 }
 
 function getLayoutType(pathname: string) {
-  if (pathname.includes('/signin')) {
+  if (pathname.includes('/login')) {
     return 'none';
   }
 

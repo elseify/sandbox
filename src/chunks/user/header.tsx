@@ -1,16 +1,18 @@
-import { Brand } from '@chunks/brand';
-import { Search } from '@chunks/user/search';
+import cn from '@utils/classnames';
 
-import styles from './header.module.scss';
+import { Logo } from '@user/Logo';
+import { Search } from '@user/Search';
+
+import styles from './Header.module.scss';
 
 function Header() {
   return (
-    <header className={styles['header']}>
-      <div className="header-layer container">
-        <div className="layer-item" data-item="brand">
-          <Brand />
+    <header className={styles.block}>
+      <div className={cn(styles.layer, 'container')}>
+        <div className={styles.layerItem} data-item="logo">
+          <Logo />
         </div>
-        <div className="layer-item" data-item="search">
+        <div className={styles.layerItem} data-item="search">
           <Search />
         </div>
       </div>
@@ -18,7 +20,6 @@ function Header() {
   );
 }
 
-export default Header;
 export {
   Header,
 };

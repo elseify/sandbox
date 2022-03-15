@@ -1,6 +1,6 @@
 import cn from '@utils/classnames';
 
-import styles from './button.module.scss';
+import styles from './Button.module.scss';
 
 function Button(props: PropsType) {
   const {
@@ -12,13 +12,13 @@ function Button(props: PropsType) {
 
   return (
     <div
-      className={cn(styles['button'], {
+      className={cn(styles.block, {
         '_fill': behavior === 'fill',
         '_disabled': isDisabled,
       })}
       {...attrs}
     >
-      <span className="button-text">{text}</span>
+      <span className={styles.text}>{text}</span>
     </div>
   );
 }
@@ -30,7 +30,6 @@ type PropsType = {
   isDisabled?: boolean;
 } & AttrsType;
 
-export default Button;
 export {
   Button,
 };
