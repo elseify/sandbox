@@ -1,5 +1,7 @@
 import * as jose from 'jose';
-import type { JWTPayload } from 'jose';
+import type {
+  JWTPayload,
+} from 'jose';
 
 const key = 'PoG+Ce6UvNg805KG6eic+vuwZ5ahPwIhk50fQGvzHjM=';
 const res = {

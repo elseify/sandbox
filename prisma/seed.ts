@@ -2,12 +2,12 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export default async function seed() {
+async function seed() {
   await prisma.user.create(
     {
       data: {
-        email: 'user@email.com',
-        username: 'User',
+        email: 'user@example.com',
+        username: 'user',
         password: '1234',
         role: 'ADMIN',
       },
