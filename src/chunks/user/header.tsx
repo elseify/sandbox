@@ -1,5 +1,4 @@
-import cn from '@utils/classnames';
-
+import { classNames as cn } from '@utils/classnames';
 import { Logo } from '@user/Logo';
 import { Search } from '@user/Search';
 

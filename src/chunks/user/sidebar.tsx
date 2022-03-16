@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import cn from '@utils/classnames';
+import { classNames as cn } from '@utils/classnames';
 
 import styles from './sidebar.module.scss';
 
@@ -34,7 +34,6 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
 export {
   Sidebar,
 };

@@ -16,7 +16,6 @@ type PropsType = {
   linkTo: string;
 };
 
-export default More;
 export {
   More,
 };
