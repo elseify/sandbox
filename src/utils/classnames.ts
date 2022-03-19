@@ -25,7 +25,6 @@ type UnionType = ValueType | {
   [key: string]: ValueType;
 };
 
-export default classNames;
 export {
   classNames,
 };

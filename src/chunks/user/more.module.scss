@@ -1,4 +1,4 @@
-.more {
+.block {
   display: flex;
 
   justify-content: center;
@@ -22,15 +22,15 @@
   &:hover {
     opacity: 1;
   }
+}
 
-  > .more-icon {
-    display: block;
+.icon {
+  display: block;
 
-    line-height: 24px;
-    font-family: 'JetBrains Mono';
-    font-weight: 300;
-    font-size: 18px;
+  line-height: 24px;
+  font-family: 'JetBrains Mono';
+  font-weight: 300;
+  font-size: 18px;
 
-    color: #000000;
-  }
+  color: #000000;
 }

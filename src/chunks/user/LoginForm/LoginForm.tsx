@@ -5,8 +5,8 @@ import type {
   SubmitHandler,
 } from 'react-hook-form';
 
-import { Input } from '@dashboard/Input';
-import { Button } from '@dashboard/Button';
+import { Input } from '@chunks/common/Input';
+import { Button } from '@chunks/common/Button';
 
 import styles from './LoginForm.module.scss';
 

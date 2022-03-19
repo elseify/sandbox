@@ -1,6 +1,6 @@
-import { Page } from '@common/Page';
-import { Logo } from '@user/Logo';
-import { LoginForm } from '@dashboard/LoginForm';
+import { Page } from '@chunks/common/Page';
+import { Logo } from '@chunks/user/Logo';
+import { LoginForm } from '@chunks/user/LoginForm';
 
 import styles from './login.module.scss';
 

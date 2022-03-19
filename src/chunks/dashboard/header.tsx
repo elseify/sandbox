@@ -1,6 +1,6 @@
+import { Logo } from '@chunks/dashboard/Logo';
+import { Logout } from '@chunks/dashboard/Logout';
 import { classNames as cn } from '@utils/classnames';
-import { Logo } from '@dashboard/Logo';
-import { Logout } from '@dashboard/Logout';
 
 import styles from './Header.module.scss';
 

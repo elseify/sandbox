@@ -5,8 +5,8 @@ import styles from './more.module.scss';
 function More({ linkTo }: PropsType) {
   return (
     <Link href={linkTo}>
-      <a className={styles['more']}>
-        <span className="more-icon">{'...'}</span>
+      <a className={styles.block}>
+        <span className={styles.icon}>{'...'}</span>
       </a>
     </Link>
   );

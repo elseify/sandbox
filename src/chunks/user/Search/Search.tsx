@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import {
+  useAppSelector,
+  useAppDispatch,
+} from '@services/reduxHooks';
+import { setSearchValue } from '@services/slices/sliceSearch';
 
 import { SearchControl } from './SearchControl';
 import { SearchOverlay } from './SearchOverlay';
@@ -6,20 +10,27 @@ import { SearchOverlay } from './SearchOverlay';
 import styles from './Search.module.scss';
 
 function Search() {
-  const [value, setValue] = useState('');
+  const appSelector = useAppSelector((state) => state.search);
+  const appDispatch = useAppDispatch();
+
+  const {
+    searchValue,
+  } = appSelector;
 
   return (
     <div className={styles.block}>
       <SearchControl
-        value={value}
-        setValue={setValue}
+        value={searchValue}
+        setValue={(value) => {
+          // Устанавливаем состояние поиска
+          appDispatch(setSearchValue(value));
+        }}
       />
       <SearchOverlay />
     </div>
   );
 }
 
-export default Search;
 export {
   Search,
 };

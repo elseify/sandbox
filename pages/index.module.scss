@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.info {
+  display: flex;
+}
+
 .content,
 .control {
   &:not(:last-child) {

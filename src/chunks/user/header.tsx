@@ -1,6 +1,6 @@
+import { Logo } from '@chunks/user/Logo';
+import { Search } from '@chunks/user/Search';
 import { classNames as cn } from '@utils/classnames';
-import { Logo } from '@user/Logo';
-import { Search } from '@user/Search';
 
 import styles from './Header.module.scss';
 

@@ -105,7 +105,7 @@ type BodyType = {
    * 'jti' (JWT ID) Claim
    */
   jti?: string;
-}
+};
 
 export {
   tokenSign,

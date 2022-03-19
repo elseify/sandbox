@@ -19,6 +19,9 @@
       "@lib/*": [
         "lib/*"
       ],
+      "@chunks/*": [
+        "src/chunks/*"
+      ],
       "@common/*": [
         "src/chunks/common/*"
       ],
@@ -27,6 +30,9 @@
       ],
       "@user/*": [
         "src/chunks/user/*"
+      ],
+      "@services/*": [
+        "src/services/*"
       ],
       "@styles/*": [
         "src/styles/*"

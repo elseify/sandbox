@@ -12,7 +12,6 @@ declare global {
   var prisma: PrismaClient | undefined;
 }
 
-export default prisma;
 export {
   prisma,
 };

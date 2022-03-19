@@ -1,26 +1,76 @@
-import { Page } from '@common/Page';
-import { Grid } from '@common/Grid';
-import { ChunkCard } from '@user/card/ChunkCard';
-import { GuideCard } from '@user/card/GuideCard';
-import { Pagination } from '@common/Pagination';
+import type { GetServerSideProps } from 'next';
+
+import { prisma } from '@lib/prisma';
+import type {
+  Chunk,
+} from '@prisma/client';
+
+import { Page } from '@chunks/common/Page';
+import { Grid } from '@chunks/common/Grid';
+import { ChunkCard } from '@chunks/user/ChunkCard';
+
+import { initServer } from '@services/reduxStore';
+import { setSearchValue } from '@services/slices/sliceSearch';
 
 import styles from './index.module.scss';
 
-function Home() {
+function Home(props: PropsType) {
+  const {
+    chunks,
+  } = props;
+
   return (
     <Page className={styles.block}>
+      <div className={styles.info}></div>
       <div className={styles.content}>
         <Grid>
-          <ChunkCard />
-          <ChunkCard />
-          <ChunkCard />
+          {chunks.map((chunk) => <ChunkCard id={chunk.id} key={chunk.id} />)}
         </Grid>
       </div>
-      <div className={styles.control}>
-        <Pagination />
-      </div>
+      <div className={styles.control}></div>
     </Page>
   );
 }
 
+const getServerSideProps: GetServerSideProps<PropsType> = async (context) => {
+  const {
+    query,
+    req: {
+      cookies,
+    },
+    res,
+  } = context;
+
+  const chunks = await prisma.chunk.findMany();
+
+  const initialStore = initServer(cookies._state);
+
+  let searchValue = query.search;
+
+  if (searchValue) {
+    searchValue = String(searchValue);
+    searchValue = decodeURIComponent(searchValue);
+
+    initialStore.dispatch(setSearchValue(searchValue));
+  } else {
+    initialStore.dispatch(setSearchValue(''));
+  }
+
+  const initialState = initialStore.getState();
+
+  return {
+    props: {
+      chunks: JSON.parse(JSON.stringify(chunks)),
+      initialState,
+    },
+  };
+}
+
+type PropsType = {
+  chunks: Chunk[];
+};
+
 export default Home;
+export {
+  getServerSideProps,
+};
