@@ -43,7 +43,7 @@ const getServerSideProps: GetServerSideProps<PropsType> = async (context) => {
 
   const chunks = await prisma.chunk.findMany();
 
-  const initialStore = initServer(cookies._state);
+  const initialStore = initServer(cookies._state, res);
 
   let searchValue = query.search;
 

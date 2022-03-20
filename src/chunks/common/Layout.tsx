@@ -38,7 +38,7 @@ function renderHeader(type: LayoutType) {
 type PropsType = {
   /**
    * Тип макета в зависимости от которого определяется вариант
-   * шапки и фона сайта
+   * шапки и фон сайта
    */
   type?: LayoutType;
   /**

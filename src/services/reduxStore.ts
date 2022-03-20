@@ -1,7 +1,7 @@
-import {
-  cloneDeep,
-  mergeWith,
-} from 'lodash';
+import type { ServerResponse } from 'http';
+
+import cloneDeep from 'lodash/cloneDeep';
+import mergeWith from 'lodash/mergeWith';
 
 import {
   configureStore,
@@ -9,12 +9,12 @@ import {
 } from '@reduxjs/toolkit';
 import type { TypedStartListening } from '@reduxjs/toolkit';
 
-import { slice as sliceSearch } from './slices/sliceSearch';
-
 import {
   getCookie,
   setCookie,
 } from '@utils/cookie';
+
+import { slice as sliceSearch } from './slices/sliceSearch';
 
 const initialState: StateType = {
   [sliceSearch.name]: sliceSearch.getInitialState(),
@@ -34,8 +34,8 @@ startListening(
       const _state = JSON.stringify(listenerApi.getState());
 
       /**
-       * Запись состояния в куки для инициализации на стороне
-       * сервера с целью предотвращения потери уже измененных значений
+       * Запись состояния в куки для инициализации на
+       * стороне сервера.
        */
       setCookie('_state', _state, true);
     },
@@ -48,9 +48,9 @@ function initState(state?: StateType) {
   if (state) {
     try {
       /**
-       * Слияние начального состояния с полученным для предотвращения
-       * возможных ошибок когда ключи или типы значений полученного состояния
-       * отличаются от ожидаемого
+       * Слияние начального состояния с полученным. Необходимо
+       * для предотвращения ошибок в случае если полученные ключи
+       * и значения не соответствуют ожидаемым.
        */
       _state = mergeWith(_state, state, mergeCustomize);
     } catch (error) {
@@ -61,13 +61,18 @@ function initState(state?: StateType) {
   return _state;
 
   function mergeCustomize(objValue: any, srcValue: any) {
+    /**
+     * Предотвращение слияния массивов. Ожидается что
+     * значение массива будет заменено, так как иначе в
+     * нем могут присутствовать лишние значения.
+     */
     if (Array.isArray(objValue) && Array.isArray(srcValue)) {
       return objValue;
     }
   }
 }
 
-function initStore(state?: StateType) {
+function initStore(state: StateType) {
   return configureStore(
     {
       reducer: {
@@ -77,12 +82,16 @@ function initStore(state?: StateType) {
         return getDefaultMiddleware()
           .prepend(listenerMiddleware.middleware);
       },
-      preloadedState: state ?? cloneDeep(initialState),
+      preloadedState: state,
     }
   );
 }
 
-function initServer(value?: string) {
+function initClient(state?: StateType) {
+  return initStore(initState(state));
+}
+
+function initServer(value?: string, res?: ServerResponse) {
   let _state: StateType | undefined;
 
   if (value) {
@@ -90,6 +99,12 @@ function initServer(value?: string) {
       _state = JSON.parse(decodeURIComponent(value));
     } catch (error) {
       console.log(error);
+
+      const chunk = `_state=${JSON.stringify({})}; Path=/; Expires=${new Date(0)}`;
+
+      if (res) {
+        res.setHeader('Set-Cookie', chunk);
+      }
     }
   }
 
@@ -106,9 +121,7 @@ type AppDispatch = AppStore['dispatch'];
 type StartListening = TypedStartListening<AppState, AppDispatch>;
 
 export {
-  initialState,
-  initState,
-  initStore,
+  initClient,
   initServer,
 };
 export type {

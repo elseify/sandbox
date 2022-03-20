@@ -7,7 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 
 import { Layout } from '@chunks/common/Layout';
 
-import { initStore } from '@services/reduxStore';
+import { initClient } from '@services/reduxStore';
 
 import '@styles/app.scss';
 
@@ -16,7 +16,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
   const { pathname } = router;
 
   return (
-    <Provider store={initStore(initialState)}>
+    <Provider store={initClient(initialState)}>
       <Head>
         <title>Typeify</title>
       </Head>
