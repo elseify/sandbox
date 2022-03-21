@@ -1,9 +1,7 @@
 import type { GetServerSideProps } from 'next';
 
 import { prisma } from '@lib/prisma';
-import type {
-  Chunk,
-} from '@prisma/client';
+import type { Chunk } from '@prisma/client';
 
 import { Page } from '@chunks/common/Page';
 import { Grid } from '@chunks/common/Grid';
@@ -14,7 +12,7 @@ import { setSearchValue } from '@services/slices/sliceSearch';
 
 import styles from './index.module.scss';
 
-function Home(props: PropsType) {
+export default function Home(props: PropsType) {
   const {
     chunks,
   } = props;
@@ -32,7 +30,7 @@ function Home(props: PropsType) {
   );
 }
 
-const getServerSideProps: GetServerSideProps<PropsType> = async (context) => {
+export const getServerSideProps: GetServerSideProps<PropsType> = async (context) => {
   const {
     query,
     req: {
@@ -68,9 +66,4 @@ const getServerSideProps: GetServerSideProps<PropsType> = async (context) => {
 
 type PropsType = {
   chunks: Chunk[];
-};
-
-export default Home;
-export {
-  getServerSideProps,
 };

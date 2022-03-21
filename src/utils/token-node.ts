@@ -6,7 +6,7 @@ const res = {
   denied: false,
 };
 
-function tokenSign(body: BodyType = {}) {
+export function tokenSign(body: BodyType = {}) {
   const head: HeadType = {
     alg: 'HS256',
     typ: 'JWT',
@@ -29,7 +29,7 @@ function tokenSign(body: BodyType = {}) {
   ].join('.');
 }
 
-function tokenVerify(token: string) {
+export function tokenVerify(token: string) {
   if (!token.includes('.')) {
     return res.denied;
   }
@@ -105,9 +105,4 @@ type BodyType = {
    * 'jti' (JWT ID) Claim
    */
   jti?: string;
-};
-
-export {
-  tokenSign,
-  tokenVerify,
 };

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from './Logo.module.scss';
 
-function Logo() {
+export function Logo() {
   return (
     <Link href="/">
       <a className={styles.block}>
@@ -11,7 +11,3 @@ function Logo() {
     </Link>
   );
 }
-
-export {
-  Logo,
-};

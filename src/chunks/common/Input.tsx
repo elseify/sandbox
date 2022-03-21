@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import styles from './Input.module.scss';
 
-const Input = forwardRef<HTMLInputElement, PropsType>((props, ref) => {
+export const Input = forwardRef<HTMLInputElement, PropsType>((props, ref) => {
   const {
     error,
     isTouched,
@@ -25,7 +25,3 @@ type PropsType = {
   error?: string;
   isTouched?: boolean;
 } & AttrsType;
-
-export {
-  Input,
-};

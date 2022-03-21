@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type {
-  PayloadAction,
-} from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: InitialStateType = {
   searchValue: '',
 };
 
-const slice = createSlice(
+export const slice = createSlice(
   {
     name: 'search',
     initialState,
@@ -19,11 +17,10 @@ const slice = createSlice(
   }
 );
 
-type InitialStateType = {
-  searchValue: string;
-};
-
-export { slice };
 export const {
   setSearchValue,
 } = slice.actions;
+
+type InitialStateType = {
+  searchValue: string;
+};

@@ -17,16 +17,16 @@
   cursor: pointer;
 
   &:hover {
-    > .itemIcon {
+    .itemIcon {
       visibility: visible;
     }
   }
 
-  &._on {
+  &:global(._on) {
     background-color: #828BF8;
 
-    > .itemIcon,
-    > .itemText {
+    .itemIcon,
+    .itemText {
       color: #FFFFFF;
 
       visibility: visible;

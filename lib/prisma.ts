@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
-const prisma = global.prisma || new PrismaClient();
+export const prisma = global.prisma || new PrismaClient();
 
 if (process.env.NODE_ENV.includes('dev')) {
   global.prisma = prisma;
@@ -10,8 +10,4 @@ if (process.env.NODE_ENV.includes('dev')) {
 
 declare global {
   var prisma: PrismaClient | undefined;
-}
-
-export {
-  prisma,
 };

@@ -42,6 +42,21 @@ startListening(
   }
 );
 
+function initStore(state: StateType) {
+  return configureStore(
+    {
+      reducer: {
+        [sliceSearch.name]: sliceSearch.reducer,
+      },
+      middleware(getDefaultMiddleware) {
+        return getDefaultMiddleware()
+          .prepend(listenerMiddleware.middleware);
+      },
+      preloadedState: state,
+    }
+  );
+}
+
 function initState(state?: StateType) {
   let _state = cloneDeep(initialState);
 
@@ -72,26 +87,11 @@ function initState(state?: StateType) {
   }
 }
 
-function initStore(state: StateType) {
-  return configureStore(
-    {
-      reducer: {
-        [sliceSearch.name]: sliceSearch.reducer,
-      },
-      middleware(getDefaultMiddleware) {
-        return getDefaultMiddleware()
-          .prepend(listenerMiddleware.middleware);
-      },
-      preloadedState: state,
-    }
-  );
-}
-
-function initClient(state?: StateType) {
+export function initClient(state?: StateType) {
   return initStore(initState(state));
 }
 
-function initServer(value?: string, res?: ServerResponse) {
+export function initServer(value?: string, res?: ServerResponse) {
   let _state: StateType | undefined;
 
   if (value) {
@@ -120,10 +120,6 @@ type AppState = ReturnType<AppStore['getState']>;
 type AppDispatch = AppStore['dispatch'];
 type StartListening = TypedStartListening<AppState, AppDispatch>;
 
-export {
-  initClient,
-  initServer,
-};
 export type {
   AppStore,
   AppState,

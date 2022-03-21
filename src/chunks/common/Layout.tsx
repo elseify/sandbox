@@ -3,7 +3,12 @@ import { Header as UserHeader } from '@chunks/user/Header';
 
 import styles from './Layout.module.scss';
 
-function Layout({ type = 'user', children }: PropsType) {
+export function Layout(props: PropsType) {
+  const {
+    type = 'user',
+    children,
+  } = props;
+
   return (
     <>
       {renderHeader(type)}
@@ -12,7 +17,11 @@ function Layout({ type = 'user', children }: PropsType) {
           <div className="container">
             {children}
           </div>
-          <style jsx global>{`body { background-color: #F2F4F6; }`}</style>
+          {type === 'dashboard' ? (
+            <style jsx global>{`body { background-color: #FFFFFF; }`}</style>
+          ) : (
+            <style jsx global>{`body { background-color: #F2F4F6; }`}</style>
+          )}
         </div>
       ) : (
         <div className="container">
@@ -24,7 +33,7 @@ function Layout({ type = 'user', children }: PropsType) {
   );
 }
 
-function renderHeader(type: LayoutType) {
+function renderHeader(type: 'dashboard' | 'user' | 'none') {
   switch (type) {
     case 'dashboard':
       return <DashHeader />
@@ -40,15 +49,6 @@ type PropsType = {
    * Тип макета в зависимости от которого определяется вариант
    * шапки и фон сайта
    */
-  type?: LayoutType;
-  /**
-   * Дочерние элементы компонента
-   */
+  type?: 'dashboard' | 'user' | 'none';
   children: React.ReactNode;
-};
-
-type LayoutType = 'dashboard' | 'user' | 'none';
-
-export {
-  Layout,
 };

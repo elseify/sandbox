@@ -10,10 +10,5 @@ import type {
   AppDispatch,
 } from './reduxStore';
 
-const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
-const useAppDispatch = () => useDispatch<AppDispatch>();
-
-export {
-  useAppSelector,
-  useAppDispatch,
-};
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
+export const useAppDispatch = () => useDispatch<AppDispatch>();

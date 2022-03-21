@@ -5,7 +5,7 @@ import { classNames as cn } from '@utils/classnames';
 
 import styles from './sidebar.module.scss';
 
-function Sidebar() {
+export function Sidebar() {
   const router = useRouter();
 
   return (
@@ -31,7 +31,3 @@ function Sidebar() {
     </div>
   );
 }
-
-export {
-  Sidebar,
-};

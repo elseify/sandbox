@@ -16,12 +16,12 @@
 
   cursor: pointer;
 
-  &._fill {
+  &:global(._fill) {
     width: 100%;
   }
 
-  &._disabled {
-    > .text {
+  &:global(._disabled) {
+    .text {
       color: rgba($color: #FFFFFF, $alpha: 0.24);
     }
   }

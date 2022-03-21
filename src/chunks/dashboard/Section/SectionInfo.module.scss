@@ -1,0 +1,50 @@
+.block {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.side {
+  display: flex;
+
+  &:global(._ls) {
+    justify-content: flex-start;
+  }
+
+  &:global(._rs) {
+    justify-content: flex-end;
+  }
+}
+
+.link {
+  display: block;
+
+  text-decoration-line: none;
+
+  &:not(:last-child) {
+    margin-right: 24px;
+  }
+}
+
+.sideText,
+.linkText {
+  display: block;
+
+  line-height: 22px;
+  font-weight: 400;
+  font-size: 16px;
+
+  color: inherit;
+}
+
+.sideText {
+  font-weight: 500;
+
+  color: #000000;
+}
+
+.linkText {
+  font-weight: 400;
+
+  color: #828BF8;
+}

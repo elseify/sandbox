@@ -9,7 +9,7 @@ import { SearchOverlay } from './SearchOverlay';
 
 import styles from './Search.module.scss';
 
-function Search() {
+export function Search() {
   const appSelector = useAppSelector((state) => state.search);
   const appDispatch = useAppDispatch();
 
@@ -30,7 +30,3 @@ function Search() {
     </div>
   );
 }
-
-export {
-  Search,
-};

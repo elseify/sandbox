@@ -1,4 +1,4 @@
-function parseCookie(cookie: string, decode: boolean = false) {
+export function parseCookie(cookie: string, decode: boolean = false) {
   const entryAll: EntryType[] = [];
   const chunkAll: ChunkType[] = cookie.split('; ');
 
@@ -18,7 +18,7 @@ function parseCookie(cookie: string, decode: boolean = false) {
   return cookieObj;
 }
 
-function getCookie(key: string, decode: boolean = false) {
+export function getCookie(key: string, decode: boolean = false) {
   if (isServer()) return null;
 
   let cookieValue = '';
@@ -40,7 +40,7 @@ function getCookie(key: string, decode: boolean = false) {
   return cookieValue;
 }
 
-function setCookie(key: string, value: string, encode: boolean = false) {
+export function setCookie(key: string, value: string, encode: boolean = false) {
   if (isServer()) return null;
 
   let cookieValue: string;
@@ -68,9 +68,3 @@ function isServer() {
 
 type EntryType = [key: string, value: string];
 type ChunkType = string;
-
-export {
-  parseCookie,
-  getCookie,
-  setCookie,
-};

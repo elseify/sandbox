@@ -1,6 +1,6 @@
 import styles from './SearchControl.module.scss';
 
-function SearchControl(props: PropsType) {
+export function SearchControl(props: PropsType) {
   const {
     query = [],
     value = '',
@@ -29,8 +29,4 @@ type PropsType = {
   query?: string[];
   value?: string;
   setValue: (value: string) => void;
-};
-
-export {
-  SearchControl,
 };

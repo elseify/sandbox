@@ -11,9 +11,17 @@ import { initClient } from '@services/reduxStore';
 
 import '@styles/app.scss';
 
-export default function App({ Component, pageProps, router }: AppProps) {
-  const { initialState } = pageProps;
-  const { pathname } = router;
+export default function App(props: AppProps) {
+  const {
+    Component,
+    pageProps,
+    pageProps: {
+      initialState,
+    },
+    router: {
+      pathname,
+    },
+  } = props;
 
   return (
     <Provider store={initClient(initialState)}>

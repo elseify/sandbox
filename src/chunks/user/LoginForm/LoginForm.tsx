@@ -1,16 +1,14 @@
 import { useRouter } from 'next/router';
 
 import { useForm } from 'react-hook-form';
-import type {
-  SubmitHandler,
-} from 'react-hook-form';
+import type { SubmitHandler } from 'react-hook-form';
 
 import { Input } from '@chunks/common/Input';
 import { Button } from '@chunks/common/Button';
 
 import styles from './LoginForm.module.scss';
 
-function LoginForm() {
+export function LoginForm() {
   const { push } = useRouter();
 
   const {
@@ -74,8 +72,4 @@ function LoginForm() {
 type ValuesType = {
   username: string;
   password: string;
-};
-
-export {
-  LoginForm,
 };

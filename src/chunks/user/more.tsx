@@ -2,7 +2,11 @@ import Link from 'next/link';
 
 import styles from './more.module.scss';
 
-function More({ linkTo }: PropsType) {
+export function More(props: PropsType) {
+  const {
+    linkTo,
+  } = props;
+
   return (
     <Link href={linkTo}>
       <a className={styles.block}>
@@ -14,8 +18,4 @@ function More({ linkTo }: PropsType) {
 
 type PropsType = {
   linkTo: string;
-};
-
-export {
-  More,
 };

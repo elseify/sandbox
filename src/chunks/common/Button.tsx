@@ -2,7 +2,7 @@ import { classNames as cn } from '@utils/classnames';
 
 import styles from './Button.module.scss';
 
-function Button(props: PropsType) {
+export function Button(props: PropsType) {
   const {
     text,
     behavior = 'fit',
@@ -12,10 +12,13 @@ function Button(props: PropsType) {
 
   return (
     <div
-      className={cn(styles.block, {
-        '_fill': behavior === 'fill',
-        '_disabled': isDisabled,
-      })}
+      className={cn(
+        styles.block,
+        {
+          '_fill': behavior === 'fill',
+          '_disabled': isDisabled,
+        }
+      )}
       {...attrs}
     >
       <span className={styles.text}>{text}</span>
@@ -29,7 +32,3 @@ type PropsType = {
   behavior?: 'fit' | 'fill';
   isDisabled?: boolean;
 } & AttrsType;
-
-export {
-  Button,
-};

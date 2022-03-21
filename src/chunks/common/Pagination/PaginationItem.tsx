@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from './PaginationItem.module.scss';
 
-function PaginationItem({ icon }: PropsType) {
+export function PaginationItem({ icon }: PropsType) {
   return (
     <a className={styles.block}>
       <span className={styles.icon}>{icon}</span>
@@ -12,8 +12,4 @@ function PaginationItem({ icon }: PropsType) {
 
 type PropsType = {
   icon: string;
-};
-
-export {
-  PaginationItem,
 };

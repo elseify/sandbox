@@ -1,6 +1,6 @@
 import styles from './ChunkCard.module.scss';
 
-function ChunkCard(props: PropsType) {
+export function ChunkCard(props: PropsType) {
   const {
     id,
   } = props;
@@ -16,8 +16,4 @@ function ChunkCard(props: PropsType) {
 
 type PropsType = {
   id: number;
-};
-
-export {
-  ChunkCard,
 };

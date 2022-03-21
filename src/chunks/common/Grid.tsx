@@ -1,6 +1,10 @@
 import styles from './Grid.module.scss';
 
-function Grid({ children }: PropsType) {
+export function Grid(props: PropsType) {
+  const {
+    children,
+  } = props;
+
   return (
     <div className={styles.block}>
       {children}
@@ -10,8 +14,4 @@ function Grid({ children }: PropsType) {
 
 type PropsType = {
   children: React.ReactNode;
-};
-
-export {
-  Grid,
 };

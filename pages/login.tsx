@@ -4,7 +4,7 @@ import { LoginForm } from '@chunks/user/LoginForm';
 
 import styles from './login.module.scss';
 
-function Login() {
+export default function Login() {
   return (
     <Page className={styles.block}>
       <div className={styles.layer}>
@@ -18,5 +18,3 @@ function Login() {
     </Page>
   );
 }
-
-export default Login;

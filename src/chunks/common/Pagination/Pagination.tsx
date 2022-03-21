@@ -2,7 +2,7 @@ import { PaginationItem } from './PaginationItem';
 
 import styles from './Pagination.module.scss';
 
-function Pagination() {
+export function Pagination() {
   return (
     <div className={styles.block}>
       <div className={styles.list}>
@@ -12,7 +12,3 @@ function Pagination() {
     </div>
   );
 }
-
-export {
-  Pagination,
-};

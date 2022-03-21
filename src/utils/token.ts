@@ -9,7 +9,7 @@ const res = {
   denied: false,
 };
 
-async function tokenSign(payload: JWTPayload = {}) {
+export async function tokenSign(payload: JWTPayload = {}) {
   if (!payload.exp) payload.exp = Date.now() + 86400 * 30;
   if (!payload.iat) payload.iat = Date.now();
 
@@ -18,7 +18,7 @@ async function tokenSign(payload: JWTPayload = {}) {
     .sign(new TextEncoder().encode(key));
 }
 
-async function tokenVerify(token: string) {
+export async function tokenVerify(token: string) {
   try {
     await jose.jwtVerify(token, new TextEncoder().encode(key));
 
@@ -27,8 +27,3 @@ async function tokenVerify(token: string) {
     return res.denied;
   }
 }
-
-export {
-  tokenSign,
-  tokenVerify,
-};

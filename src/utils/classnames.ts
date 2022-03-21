@@ -1,4 +1,4 @@
-function classNames(...args: UnionType[]) {
+export function classNames(...args: UnionType[]) {
   const array: string[] = [];
 
   for (let arg of args) {
@@ -23,8 +23,4 @@ function classNames(...args: UnionType[]) {
 type ValueType = string | number | boolean | undefined;
 type UnionType = ValueType | {
   [key: string]: ValueType;
-};
-
-export {
-  classNames,
 };

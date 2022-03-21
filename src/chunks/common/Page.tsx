@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion';
 
-function Page({ className, children }: PageType) {
+export function Page(props: PropsType) {
+  const {
+    className,
+    children,
+  } = props;
+
   return (
     <motion.main
       className={className}
@@ -21,19 +26,7 @@ function Page({ className, children }: PageType) {
   );
 }
 
-type PageType = {
-  /**
-   * Имя класса элемента
-   *
-   * Используется имя полученное из файла модуля стилей
-   */
-   className: string;
-  /**
-   * Дочерние элементы
-   */
+type PropsType = {
+  className: string;
   children: React.ReactNode;
-};
-
-export {
-  Page,
 };
