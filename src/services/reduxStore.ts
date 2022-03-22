@@ -100,7 +100,7 @@ export function initServer(value?: string, res?: ServerResponse) {
     } catch (error) {
       console.log(error);
 
-      const chunk = `_state=${JSON.stringify({})}; Path=/; Expires=${new Date(0)}`;
+      const chunk = `_state=${value}; Path=/; Expires=${new Date(0)}`;
 
       if (res) {
         res.setHeader('Set-Cookie', chunk);
