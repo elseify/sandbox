@@ -6,7 +6,7 @@ export function Logo() {
   return (
     <Link href="/">
       <a className={styles.block}>
-        <span className={styles.icon}>{'{y}'}</span>
+        <span className={styles.icon}>Sandbox</span>
       </a>
     </Link>
   );

@@ -26,7 +26,7 @@ export default function App(props: AppProps) {
   return (
     <Provider store={initClient(initialState)}>
       <Head>
-        <title>Typeify</title>
+        <title>Sandbox</title>
       </Head>
       <Layout type={getLayoutType(pathname)}>
         <AnimatePresence
