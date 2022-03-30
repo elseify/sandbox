@@ -7,16 +7,16 @@ async function seed() {
     {
       data: [
         {
-          name: 'Навигация',
+          name: 'Тег',
         },
         {
-          name: 'Боковая панель',
+          name: 'Тег 2',
         },
         {
-          name: 'Форма',
+          name: 'Тег 3',
         },
         {
-          name: 'Модальное окно',
+          name: 'Тег 4',
         },
       ],
     }
@@ -25,7 +25,7 @@ async function seed() {
   await prisma.user.create(
     {
       data: {
-        email: 'user@example.com',
+        email: 'user@email.com',
         username: 'user',
         password: '1234',
         role: 'ADMIN',
@@ -37,7 +37,7 @@ async function seed() {
                 blocks: [
                   {
                     type: 'Header',
-                    data: 'Заголовок',
+                    data: 'Название',
                   },
                 ],
               },
@@ -46,7 +46,7 @@ async function seed() {
                 blocks: [
                   {
                     type: 'Header',
-                    data: 'Заголовок',
+                    data: 'Название',
                   },
                 ],
               },
@@ -55,7 +55,7 @@ async function seed() {
                 blocks: [
                   {
                     type: 'Header',
-                    data: 'Заголовок',
+                    data: 'Название',
                   },
                 ],
               },
@@ -64,7 +64,7 @@ async function seed() {
                 blocks: [
                   {
                     type: 'Header',
-                    data: 'Заголовок',
+                    data: 'Название',
                   },
                 ],
               },

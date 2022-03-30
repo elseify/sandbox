@@ -3,9 +3,9 @@ import type { GetServerSideProps } from 'next';
 import { prisma } from '@lib/prisma';
 import type { Chunk } from '@prisma/client';
 
-import { Page } from '@chunks/common/Page';
-import { Grid } from '@chunks/common/Grid';
-import { ChunkCard } from '@chunks/user/ChunkCard';
+import { Page } from '@components/common/Page';
+import { Grid } from '@components/common/Grid';
+import { Card } from '@components/user/Card';
 
 import { initServer } from '@services/reduxStore';
 import { setSearchValue } from '@services/slices/sliceSearch';
@@ -22,7 +22,7 @@ export default function Home(props: PropsType) {
       <div className={styles.info}></div>
       <div className={styles.content}>
         <Grid>
-          {chunks.map((chunk) => <ChunkCard id={chunk.id} key={chunk.id} />)}
+          {chunks.map((chunk) => <Card id={chunk.id} key={chunk.id} />)}
         </Grid>
       </div>
       <div className={styles.control}></div>

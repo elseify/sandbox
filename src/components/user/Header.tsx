@@ -1,5 +1,5 @@
-import { Logo } from '@chunks/user/Logo';
-import { Search } from '@chunks/user/Search';
+import { Logo } from '@components/user/Logo';
+import { Search } from '@components/user/Search';
 
 import { classNames as cn } from '@utils/classnames';
 

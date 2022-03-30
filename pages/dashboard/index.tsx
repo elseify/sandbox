@@ -1,6 +1,6 @@
-import { Page } from '@chunks/common/Page';
-import { Section } from '@chunks/dashboard/Section';
-import { Item } from '@chunks/dashboard/Item';
+import { Page } from '@components/common/Page';
+import { Section } from '@components/dashboard/Section';
+import { Item } from '@components/dashboard/Item';
 
 import styles from './index.module.scss';
 

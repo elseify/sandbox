@@ -1,5 +1,5 @@
-import { Header as DashHeader } from '@chunks/dashboard/Header';
-import { Header as UserHeader } from '@chunks/user/Header';
+import { Header as DashHeader } from '@components/dashboard/Header';
+import { Header as UserHeader } from '@components/user/Header';
 
 import styles from './Layout.module.scss';
 

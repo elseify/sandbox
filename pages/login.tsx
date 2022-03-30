@@ -1,6 +1,6 @@
-import { Page } from '@chunks/common/Page';
-import { Logo } from '@chunks/user/Logo';
-import { LoginForm } from '@chunks/user/LoginForm';
+import { Page } from '@components/common/Page';
+import { Logo } from '@components/user/Logo';
+import { Form } from '@components/user/Form';
 
 import styles from './login.module.scss';
 
@@ -12,7 +12,7 @@ export default function Login() {
           <Logo />
         </div>
         <div className={styles.layerForm}>
-          <LoginForm />
+          <Form />
         </div>
       </div>
     </Page>

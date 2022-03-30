@@ -1,6 +1,6 @@
-import styles from './ChunkCard.module.scss';
+import styles from './Card.module.scss';
 
-export function ChunkCard(props: PropsType) {
+export function Card(props: PropsType) {
   const {
     id,
   } = props;
@@ -8,7 +8,7 @@ export function ChunkCard(props: PropsType) {
   return (
     <div className={styles.block}>
       <div className={styles.info}>
-        <span className={styles.infoTitle}>Меню навигации {id}</span>
+        <span className={styles.infoTitle}>Название {id}</span>
       </div>
     </div>
   );

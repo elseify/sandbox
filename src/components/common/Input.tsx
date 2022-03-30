@@ -11,7 +11,7 @@ export const Input = forwardRef<HTMLInputElement, PropsType>((props, ref) => {
 
   return (
     <input
-      className={styles.input}
+      className={styles.block}
       type="text"
       name="text"
       ref={ref}
@@ -19,6 +19,8 @@ export const Input = forwardRef<HTMLInputElement, PropsType>((props, ref) => {
     />
   );
 });
+
+Input.displayName = 'Input';
 
 type AttrsType = React.InputHTMLAttributes<HTMLInputElement>;
 type PropsType = {
