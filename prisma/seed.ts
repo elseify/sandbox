@@ -3,6 +3,60 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function seed() {
+  await prisma.user.create(
+    {
+      data: {
+        email: 'user@email.com',
+        username: 'user',
+        password: '1234',
+        role: 'ADMIN',
+      },
+    }
+  );
+
+  await prisma.chunk.createMany(
+    {
+      data: [
+        {
+          image: 'image.png',
+          blocks: [
+            {
+              type: 'Header',
+              data: 'Название',
+            },
+          ],
+        },
+        {
+          image: 'image.png',
+          blocks: [
+            {
+              type: 'Header',
+              data: 'Название',
+            },
+          ],
+        },
+        {
+          image: 'image.png',
+          blocks: [
+            {
+              type: 'Header',
+              data: 'Название',
+            },
+          ],
+        },
+        {
+          image: 'image.png',
+          blocks: [
+            {
+              type: 'Header',
+              data: 'Название',
+            },
+          ],
+        },
+      ],
+    }
+  );
+
   await prisma.tag.createMany(
     {
       data: [
@@ -22,59 +76,6 @@ async function seed() {
     }
   );
 
-  await prisma.user.create(
-    {
-      data: {
-        email: 'user@email.com',
-        username: 'user',
-        password: '1234',
-        role: 'ADMIN',
-        chunks: {
-          createMany: {
-            data: [
-              {
-                image: 'image.png',
-                blocks: [
-                  {
-                    type: 'Header',
-                    data: 'Название',
-                  },
-                ],
-              },
-              {
-                image: 'image.png',
-                blocks: [
-                  {
-                    type: 'Header',
-                    data: 'Название',
-                  },
-                ],
-              },
-              {
-                image: 'image.png',
-                blocks: [
-                  {
-                    type: 'Header',
-                    data: 'Название',
-                  },
-                ],
-              },
-              {
-                image: 'image.png',
-                blocks: [
-                  {
-                    type: 'Header',
-                    data: 'Название',
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-    }
-  );
-
   await prisma.chunk.update(
     {
       where: {
@@ -90,41 +91,27 @@ async function seed() {
     }
   );
 
-  await prisma.chunk.update(
-    {
-      where: {
-        id: 2
-      },
-      data: {
-        tags: {
-          connect: [
-            {
+  for (let chunk of await prisma.chunk.findMany()) {
+    await prisma.chunk.update(
+      {
+        where: {
+          id: chunk.id,
+        },
+        data: {
+          user: {
+            connect: {
               id: 1,
             },
-            {
-              id: 2,
-            },
-          ],
-        },
-      },
-    }
-  );
-
-  await prisma.chunk.update(
-    {
-      where: {
-        id: 3
-      },
-      data: {
-        tags: {
-          connect: {
-            id: 3,
           },
-        },
-      },
-    }
-  );
+          tags: {
+            connect: {
+              id: chunk.id < 3 ? 1 : 2,
+            }
+          },
+        }
+      }
+    )
+  }
 }
 
-// Запускаем скрипт
 seed();
