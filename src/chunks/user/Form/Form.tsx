@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import type { SubmitHandler } from 'react-hook-form';
 
-import { Input } from '@components/common/Input';
-import { Button } from '@components/common/Button';
+import { Input } from '@chunks/common/Input';
+import { Button } from '@chunks/common/Button';
 
 import styles from './Form.module.scss';
 

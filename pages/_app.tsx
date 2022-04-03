@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { AnimatePresence } from 'framer-motion';
 
-import { Layout } from '@components/common/Layout';
+import { Layout } from '@chunks/common/Layout';
 
 import { initClient } from '@services/reduxStore';
 

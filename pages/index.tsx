@@ -3,9 +3,9 @@ import type { GetServerSideProps } from 'next';
 import { prisma } from '@lib/prisma';
 import type { Chunk } from '@prisma/client';
 
-import { Page } from '@components/common/Page';
-import { Grid } from '@components/common/Grid';
-import { Card } from '@components/user/Card';
+import { Page } from '@chunks/common/Page';
+import { Grid } from '@chunks/common/Grid';
+import { Card } from '@chunks/user/Card';
 
 import { initServer } from '@services/reduxStore';
 import { setSearchValue } from '@services/slices/sliceSearch';

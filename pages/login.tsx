@@ -1,6 +1,6 @@
-import { Page } from '@components/common/Page';
-import { Logo } from '@components/user/Logo';
-import { Form } from '@components/user/Form';
+import { Page } from '@chunks/common/Page';
+import { Logo } from '@chunks/user/Logo';
+import { Form } from '@chunks/user/Form';
 
 import styles from './login.module.scss';
 

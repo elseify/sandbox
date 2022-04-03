@@ -1,5 +1,5 @@
-import { Logo } from '@components/dashboard/Logo';
-import { Logout } from '@components/dashboard/Logout';
+import { Logo } from '@chunks/dashboard/Logo';
+import { Logout } from '@chunks/dashboard/Logout';
 
 import { classNames as cn } from '@utils/classnames';
 
