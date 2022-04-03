@@ -33,15 +33,13 @@ export default function Home(props: PropsType) {
 export const getServerSideProps: GetServerSideProps<PropsType> = async (context) => {
   const {
     query,
-    req: {
-      cookies,
-    },
+    req,
     res,
   } = context;
 
   const chunks = await prisma.chunk.findMany();
 
-  const initialStore = initServer(cookies._state, res);
+  const initialStore = initServer(req, res);
 
   let searchValue = query.search;
 
@@ -59,7 +57,7 @@ export const getServerSideProps: GetServerSideProps<PropsType> = async (context)
   return {
     props: {
       chunks: JSON.parse(JSON.stringify(chunks)),
-      initialState,
+      // initialState,
     },
   };
 }

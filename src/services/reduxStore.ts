@@ -1,4 +1,7 @@
-import type { ServerResponse } from 'http';
+import type {
+  IncomingMessage,
+  ServerResponse,
+} from 'http';
 
 import cloneDeep from 'lodash/cloneDeep';
 import mergeWith from 'lodash/mergeWith';
@@ -10,6 +13,7 @@ import {
 import type { TypedStartListening } from '@reduxjs/toolkit';
 
 import {
+  parseCookie,
   getCookie,
   setCookie,
 } from '@utils/cookie';
@@ -34,8 +38,7 @@ startListening(
       const _state = JSON.stringify(listenerApi.getState());
 
       /**
-       * Запись состояния в куки для инициализации на
-       * стороне сервера.
+       * Запись состояния в куки для инициализации на стороне сервера.
        */
       setCookie('_state', _state, true);
     },
@@ -77,12 +80,21 @@ function initState(state?: StateType) {
 
   function mergeCustomize(objValue: any, srcValue: any) {
     /**
-     * Предотвращение слияния массивов. Ожидается что
-     * значение массива будет заменено, так как иначе в
-     * нем могут присутствовать лишние значения.
+     * Используем начальное значение если их типы не совпадают.
+     * Иначе этом может вызвать ошибку при попытке использования
+     * данного значения в компонентах.
      */
-    if (Array.isArray(objValue) && Array.isArray(srcValue)) {
+    if (typeof objValue !== typeof srcValue) {
       return objValue;
+    }
+
+    /**
+     * Предотвращение слияния массивов. Ожидается что
+     * значение массива будет заменено, так как иначе в массиве
+     * могут оказаться неиспользуемые значения.
+     */
+    if (Array.isArray(objValue)) {
+      return srcValue;
     }
   }
 }
@@ -91,28 +103,38 @@ export function initClient(state?: StateType) {
   return initStore(initState(state));
 }
 
-export function initServer(value?: string, res?: ServerResponse) {
-  let _state: StateType | undefined;
+export function initServer(req: IncomingMessage, res: ServerResponse) {
+  let state: StateType | undefined;
+  let cooks: CooksType = {};
 
-  if (value) {
+  try {
+    cooks = parseCookie(req.headers.cookie);
+  } catch (error) {
+    console.log(error);
+  }
+
+  if (cooks._state) {
     try {
-      _state = JSON.parse(decodeURIComponent(value));
+      state = JSON.parse(decodeURIComponent(cooks._state));
     } catch (error) {
       console.log(error);
 
-      const chunk = `_state=${value}; Path=/; Expires=${new Date(0)}`;
-
-      if (res) {
-        res.setHeader('Set-Cookie', chunk);
-      }
+      /**
+       * Удаление невалидного значения состояния из cookie.
+       */
+      res.setHeader('Set-Cookie', `_state=${cooks._state}; Path=/; Expires=${new Date(0)}`);
     }
   }
 
-  return initStore(initState(_state));
+  return initStore(initState(state));
 }
 
 type StateType = {
   [sliceSearch.name]: ReturnType<typeof sliceSearch.getInitialState>;
+};
+
+type CooksType = {
+  [key: string]: string;
 };
 
 type AppStore = ReturnType<typeof initStore>;

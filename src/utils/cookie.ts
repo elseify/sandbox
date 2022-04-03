@@ -1,4 +1,4 @@
-export function parseCookie(cookie: string, decode: boolean = false) {
+export function parseCookie(cookie: string = '', decode: boolean = false) {
   const entryAll: EntryType[] = [];
   const chunkAll: ChunkType[] = cookie.split('; ');
 
