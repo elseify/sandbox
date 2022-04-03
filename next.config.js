@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
   webpack(config) {
     const ruleAll = config.module.rules;
@@ -43,5 +43,7 @@ module.exports = {
         }
       }
     }
-  }
-}
+  },
+};
+
+module.exports = nextConfig;
