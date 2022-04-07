@@ -16,9 +16,15 @@ export function SearchControl(props: PropsType) {
         className={styles.input}
         value={value}
         placeholder="Поиск"
-        onChange={({ target }) => {
-          // Устанавливаем значение
-          setValue(target.value);
+        onChange={(event) => {
+          const {
+            target,
+            target: {
+              value,
+            },
+          } = event;
+
+          setValue(value);
         }}
       />
     </div>

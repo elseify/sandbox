@@ -2,10 +2,12 @@ import {
   useAppSelector,
   useAppDispatch,
 } from '@services/reduxHooks';
-import { setSearchValue } from '@services/slices/sliceSearch';
 
 import { SearchControl } from './SearchControl';
 import { SearchOverlay } from './SearchOverlay';
+
+// Действия
+import { setSearchValue } from './searchSlice';
 
 import styles from './Search.module.scss';
 
@@ -20,9 +22,9 @@ export function Search() {
   return (
     <div className={styles.block}>
       <SearchControl
+        query={[]}
         value={searchValue}
         setValue={(value) => {
-          // Устанавливаем состояние поиска
           appDispatch(setSearchValue(value));
         }}
       />

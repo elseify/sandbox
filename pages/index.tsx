@@ -7,8 +7,10 @@ import { Page } from '@chunks/common/Page';
 import { Grid } from '@chunks/common/Grid';
 import { Card } from '@chunks/user/Card';
 
+// Действия
+import { setSearchValue } from '@chunks/user/Search/searchSlice';
+
 import { initServer } from '@services/reduxStore';
-import { setSearchValue } from '@services/slices/sliceSearch';
 
 import styles from './index.module.scss';
 
@@ -25,7 +27,6 @@ export default function Home(props: PropsType) {
           {chunks.map((chunk) => <Card id={chunk.id} key={chunk.id} />)}
         </Grid>
       </div>
-      <div className={styles.control}></div>
     </Page>
   );
 }
@@ -57,7 +58,7 @@ export const getServerSideProps: GetServerSideProps<PropsType> = async (context)
   return {
     props: {
       chunks: JSON.parse(JSON.stringify(chunks)),
-      // initialState,
+      initialState,
     },
   };
 }

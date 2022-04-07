@@ -12,15 +12,15 @@ import {
 } from '@reduxjs/toolkit';
 import type { TypedStartListening } from '@reduxjs/toolkit';
 
+import { slice as sliceSearch } from '@chunks/user/Search/searchSlice';
+
 import {
   parseCookie,
   getCookie,
   setCookie,
 } from '@utils/cookie';
 
-import { slice as sliceSearch } from './slices/sliceSearch';
-
-const initialState: StateType = {
+const initialState = {
   [sliceSearch.name]: sliceSearch.getInitialState(),
 };
 
@@ -129,10 +129,7 @@ export function initServer(req: IncomingMessage, res: ServerResponse) {
   return initStore(initState(state));
 }
 
-type StateType = {
-  [sliceSearch.name]: ReturnType<typeof sliceSearch.getInitialState>;
-};
-
+type StateType = typeof initialState;
 type CooksType = {
   [key: string]: string;
 };
